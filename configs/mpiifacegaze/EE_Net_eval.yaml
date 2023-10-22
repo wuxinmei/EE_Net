@@ -1,0 +1,22 @@
+mode: MPIIFaceGaze
+device: cuda
+dataset:
+  dataset_dir: tools/datasets/test/MPIIFaceGaze.h5
+transform:
+  mpiifacegaze_face_size: 257
+  mpiifacegaze_eye_size: 257
+  mpiifacegaze_gray: False
+model:
+  name: EE_Net
+test:
+  test_id: 0
+#  checkpoint: experiments/mpiifacegaze/EE-Net/exp01/00/00/checkpoint_0020.pth
+  checkpoint: /media/echo/2016-2020/Project E/mpii_gaze/experiments/exp04(original data)/00/checkpoint_0020.pth
+  output_dir: experiments/mpiifacegaze/EE-Net/exp01/eval
+  batch_size: 256
+  dataloader:
+    num_workers: 4
+    pin_memory: False
+cudnn:
+  benchmark: True
+  deterministic: False
